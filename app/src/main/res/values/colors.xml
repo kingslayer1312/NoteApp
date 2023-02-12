@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="raisinBlack">#FF1A1423</color>
+    <color name="darkPurple">#FF372549</color>
+    <color name="eggplant">#FF774C60</color>
+    <color name="redwood">#FFB75D69</color>
+    <color name="paleDogwood">#FFEACDC2</color>
+
 </resources>
