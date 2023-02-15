@@ -31,7 +31,7 @@ fun NoteInputText(
         backgroundColor = Color.Transparent
     ),
     maxLines = maxLine,
-    label = { Text(text = label)},
+    label = { Text(text = label, color = colorResource(id = R.color.paleDogwood))},
     keyboardOptions = KeyboardOptions.Default.copy(
         imeAction = ImeAction.Done,
     ),
@@ -60,6 +60,6 @@ fun NoteButton(
             contentColor = colorResource(id = R.color.paleDogwood)
         ),
         modifier = modifier) {
-            Text(text)
+            Text(text, style = MaterialTheme.typography.button)
     }
 }
