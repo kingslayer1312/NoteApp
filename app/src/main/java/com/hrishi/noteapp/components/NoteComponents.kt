@@ -31,7 +31,7 @@ fun NoteInputText(
         backgroundColor = Color.Transparent
     ),
     maxLines = maxLine,
-    label = { Text(text = label, color = colorResource(id = R.color.paleDogwood))},
+    label = { Text(text = label, color = colorResource(id = R.color.black))},
     keyboardOptions = KeyboardOptions.Default.copy(
         imeAction = ImeAction.Done,
     ),
@@ -49,15 +49,17 @@ fun NoteButton(
     modifier: Modifier = Modifier,
     text: String,
     onClick: () -> Unit,
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    backgroundColor: Color = colorResource(id = R.color.charcoal),
+    contentColor: Color = colorResource(id = R.color.ecru)
 ) {
     Button(
         onClick = onClick,
         shape = CircleShape,
         enabled = enabled,
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = colorResource(id = R.color.darkPurple),
-            contentColor = colorResource(id = R.color.paleDogwood)
+            backgroundColor = backgroundColor,
+            contentColor = contentColor
         ),
         modifier = modifier) {
             Text(text, style = MaterialTheme.typography.button)

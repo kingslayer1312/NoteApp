@@ -1,21 +1,23 @@
 package com.hrishi.noteapp.screen
 
+import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.materialIcon
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -31,6 +33,9 @@ import com.hrishi.noteapp.model.Note
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 
+
+var x = 0
+
 @Composable
 fun NoteAppScreen(
     notes: List<Note>,
@@ -44,12 +49,20 @@ fun NoteAppScreen(
         mutableStateOf("")
     }
 
-    Column(modifier = Modifier
-        .padding(0.dp)
-        .background(colorResource(id = R.color.eggplant))) {
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier
+            .padding(0.dp)
+            .background(colorResource(id = R.color.butterscotch))
+    ) {
         TopAppBar(
             title = {
-                Text(text = stringResource(id = R.string.app_name))
+                Text(
+                    text = stringResource(id = R.string.app_name),
+                    fontSize = 23.sp,
+                    fontWeight = FontWeight(800)
+                )
             },
             actions = {
                 Icon(
@@ -57,8 +70,8 @@ fun NoteAppScreen(
                     contentDescription = "Icon"
                 )
             },
-            backgroundColor = colorResource(id = R.color.raisinBlack),
-            contentColor = colorResource(id = R.color.paleDogwood)
+            backgroundColor = colorResource(id = R.color.richBlack),
+            contentColor = colorResource(id = R.color.butterscotch)
         )
 
         Column(
@@ -90,18 +103,19 @@ fun NoteAppScreen(
                 onClick = {
                     if (title.isNotEmpty() && description.isNotEmpty()) {
                         // save or add to list
+                        onAddNote(Note(title = title, description = description))
                         title = ""
                         description = ""
+                        Toast.makeText(context, "Note Added", Toast.LENGTH_SHORT).show()
                     }
                 })
 
-            Divider(modifier = Modifier.padding(10.dp))
+            Divider(modifier = Modifier.padding(10.dp), thickness = 3.dp)
             LazyColumn {
                 items(notes) { note ->
-                    NoteRow(note = note, onNoteClicked = {})
+                    NoteRow(note = note, onRemoveNote = onRemoveNote)
                 }
             }
-
         }
     }
 }
@@ -110,7 +124,8 @@ fun NoteAppScreen(
 fun NoteRow(
     modifier: Modifier = Modifier,
     note: Note,
-    onNoteClicked: (Note) -> Unit
+    //onNoteClicked: (Note) -> Unit,
+    onRemoveNote: (Note) -> Unit
 ) {
     Surface(
         modifier
@@ -124,33 +139,52 @@ fun NoteRow(
                 )
             )
             .fillMaxWidth(),
-        color = colorResource(id = R.color.paleDogwood),
+        color = colorResource(id = R.color.richBlack),
         elevation = 6.dp
     ) {
         Column(
             modifier
-                .clickable { }
-                .padding(horizontal = 14.dp, vertical = 10.dp),
-            horizontalAlignment = Alignment.Start) {
+                .padding(horizontal = 20.dp, vertical = 10.dp),
+            horizontalAlignment = Alignment.Start
+        ) {
+
             Text(
                 text = note.title,
                 style = MaterialTheme.typography.body1,
                 fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
+                fontSize = 20.sp,
+                color = colorResource(id = R.color.butterscotch)
             )
-            Divider(modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp))
+
+            Divider(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 0.dp, top = 10.dp, bottom = 10.dp),
+                color = colorResource(id = R.color.ecru),
+                thickness = 3.dp
+            )
             Text(
                 text = note.description,
-                style = MaterialTheme.typography.subtitle1
+                style = MaterialTheme.typography.subtitle1,
+                color = colorResource(id = R.color.ecru)
             )
             Text(
-                modifier = Modifier.padding(top = 5.dp, bottom = 7.dp),
+                modifier = Modifier.padding(top = 7.dp, bottom = 7.dp),
                 text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM y")),
                 style = MaterialTheme.typography.caption,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                color = colorResource(id = R.color.ecru)
             )
+
+            NoteButton(
+                text = "discard",
+                onClick = {
+                    onRemoveNote(note)
+                },
+                backgroundColor = colorResource(id = R.color.alloyOrange),
+                contentColor = colorResource(id = R.color.charcoal)
+            )
+
         }
     }
 
