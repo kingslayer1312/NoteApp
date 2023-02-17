@@ -14,6 +14,12 @@
     <color name="ecru">#FFD8C99B</color>
     <color name="amaranthPurple">#FFA4243B</color>
     <color name="richBlack">#FF011627</color>
-    011627
+
+    <color name="marianBlue">#FF424874</color>
+    <color name="perlwinkle">#FFDCD6F7</color>
+    <color name="perlwinkleDark">#FFA6B1E1</color>
+    <color name="frechGray">#FFCACFD6</color>
+    <color name="azure">#FFD6E5E3</color>
+
 
 </resources>

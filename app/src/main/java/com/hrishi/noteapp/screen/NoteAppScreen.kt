@@ -10,7 +10,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.materialIcon
+import androidx.compose.material.icons.rounded.AccountBox
+import androidx.compose.material.icons.rounded.Done
+import androidx.compose.material.icons.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
@@ -54,7 +59,7 @@ fun NoteAppScreen(
     Column(
         modifier = Modifier
             .padding(0.dp)
-            .background(colorResource(id = R.color.butterscotch))
+            .background(colorResource(id = R.color.perlwinkle))
     ) {
         TopAppBar(
             title = {
@@ -64,14 +69,8 @@ fun NoteAppScreen(
                     fontWeight = FontWeight(800)
                 )
             },
-            actions = {
-                Icon(
-                    imageVector = Icons.Rounded.Notifications,
-                    contentDescription = "Icon"
-                )
-            },
-            backgroundColor = colorResource(id = R.color.richBlack),
-            contentColor = colorResource(id = R.color.butterscotch)
+            backgroundColor = colorResource(id = R.color.perlwinkleDark),
+            contentColor = colorResource(id = R.color.richBlack)
         )
 
         Column(
@@ -139,7 +138,7 @@ fun NoteRow(
                 )
             )
             .fillMaxWidth(),
-        color = colorResource(id = R.color.richBlack),
+        color = colorResource(id = R.color.perlwinkleDark),
         elevation = 6.dp
     ) {
         Column(
@@ -153,27 +152,28 @@ fun NoteRow(
                 style = MaterialTheme.typography.body1,
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
-                color = colorResource(id = R.color.butterscotch)
+                color = colorResource(id = R.color.richBlack)
             )
 
             Divider(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 0.dp, top = 10.dp, bottom = 10.dp),
-                color = colorResource(id = R.color.ecru),
+                color = colorResource(id = R.color.frechGray),
                 thickness = 3.dp
             )
             Text(
                 text = note.description,
                 style = MaterialTheme.typography.subtitle1,
-                color = colorResource(id = R.color.ecru)
+                fontSize = 17.sp,
+                color = colorResource(id = R.color.charcoal)
             )
             Text(
                 modifier = Modifier.padding(top = 7.dp, bottom = 7.dp),
                 text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM y")),
                 style = MaterialTheme.typography.caption,
                 fontWeight = FontWeight.Bold,
-                color = colorResource(id = R.color.ecru)
+                color = colorResource(id = R.color.charcoal)
             )
 
             NoteButton(
@@ -181,8 +181,8 @@ fun NoteRow(
                 onClick = {
                     onRemoveNote(note)
                 },
-                backgroundColor = colorResource(id = R.color.alloyOrange),
-                contentColor = colorResource(id = R.color.charcoal)
+                backgroundColor = colorResource(id = R.color.perlwinkle),
+                contentColor = colorResource(id = R.color.marianBlue)
             )
 
         }

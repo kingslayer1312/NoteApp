@@ -50,8 +50,8 @@ fun NoteButton(
     text: String,
     onClick: () -> Unit,
     enabled: Boolean = true,
-    backgroundColor: Color = colorResource(id = R.color.charcoal),
-    contentColor: Color = colorResource(id = R.color.ecru)
+    backgroundColor: Color = colorResource(id = R.color.marianBlue),
+    contentColor: Color = colorResource(id = R.color.azure)
 ) {
     Button(
         onClick = onClick,
