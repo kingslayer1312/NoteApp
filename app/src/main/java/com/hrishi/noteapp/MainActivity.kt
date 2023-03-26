@@ -20,7 +20,9 @@ import com.hrishi.noteapp.model.Note
 import com.hrishi.noteapp.screen.NoteAppScreen
 import com.hrishi.noteapp.screen.NoteViewModel
 import com.hrishi.noteapp.ui.theme.NoteAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
