@@ -35,6 +35,7 @@ import com.hrishi.noteapp.components.NoteButton
 import com.hrishi.noteapp.components.NoteInputText
 import com.hrishi.noteapp.data.NotesDataSource
 import com.hrishi.noteapp.model.Note
+import com.hrishi.noteapp.util.formatDate
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 
@@ -170,7 +171,7 @@ fun NoteRow(
             )
             Text(
                 modifier = Modifier.padding(top = 7.dp, bottom = 7.dp),
-                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM y")),
+                text = formatDate(note.entryDate.time),
                 style = MaterialTheme.typography.caption,
                 fontWeight = FontWeight.Bold,
                 color = colorResource(id = R.color.charcoal)

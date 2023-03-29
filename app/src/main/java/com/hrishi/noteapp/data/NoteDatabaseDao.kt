@@ -2,24 +2,26 @@ package com.hrishi.noteapp.data
 
 import androidx.room.*
 import com.hrishi.noteapp.model.Note
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDatabaseDao {
     @Query(value = "SELECT * from notes_table")
-    fun getNotes() : List<Note>
+    fun getNotes() :
+            Flow<List<Note>>
 
     @Query(value = "SELECT * from notes_table where id =:id")
-    fun getNoteById(id: String ): Note
+    suspend fun getNoteById(id: String ): Note
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(note: Note)
+    suspend fun insert(note: Note)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(note: Note)
+    suspend fun update(note: Note)
 
     @Query("DELETE from notes_table")
-    fun deleteAll()
+    suspend fun deleteAll()
 
     @Delete
-    fun deleteOneItem(note: Note)
+    suspend fun deleteOneItem(note: Note)
 }
