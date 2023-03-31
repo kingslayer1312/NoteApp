@@ -1,5 +1,6 @@
 package com.hrishi.noteapp.components
 
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -11,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.unit.dp
 import com.hrishi.noteapp.R
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -28,7 +30,8 @@ fun NoteInputText(
         value = text,
         onValueChange = onTextChange,
     colors = TextFieldDefaults.textFieldColors(
-        backgroundColor = Color.Transparent
+        backgroundColor = Color.Transparent,
+        textColor = Color.Black
     ),
     maxLines = maxLine,
     label = { Text(text = label, color = colorResource(id = R.color.black))},

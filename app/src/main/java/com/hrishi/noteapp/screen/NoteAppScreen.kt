@@ -79,7 +79,7 @@ fun NoteAppScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             NoteInputText(
-                modifier = Modifier.padding(top = 9.dp, bottom = 8.dp),
+                modifier = Modifier.padding(top = 9.dp, bottom = 8.dp, start = 55.dp, end = 55.dp),
                 text = title,
                 label = "Title",
                 onTextChange = {
@@ -89,9 +89,10 @@ fun NoteAppScreen(
                 })
 
             NoteInputText(
-                modifier = Modifier.padding(top = 9.dp, bottom = 8.dp),
+                modifier = Modifier.padding(top = 9.dp, bottom = 8.dp, start = 55.dp, end = 55.dp),
                 text = description,
                 label = "Add a note",
+                maxLine = 3,
                 onTextChange = {
                     if (it.all { char ->
                             char.isLetter() || char.isWhitespace()
