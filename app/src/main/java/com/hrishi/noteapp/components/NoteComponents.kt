@@ -1,6 +1,5 @@
 package com.hrishi.noteapp.components
 
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -12,7 +11,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.unit.dp
 import com.hrishi.noteapp.R
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -53,8 +51,8 @@ fun NoteButton(
     text: String,
     onClick: () -> Unit,
     enabled: Boolean = true,
-    backgroundColor: Color = colorResource(id = R.color.marianBlue),
-    contentColor: Color = colorResource(id = R.color.azure)
+    backgroundColor: Color = colorResource(id = R.color.violetJTC),
+    contentColor: Color = colorResource(id = R.color.desertSand)
 ) {
     Button(
         onClick = onClick,

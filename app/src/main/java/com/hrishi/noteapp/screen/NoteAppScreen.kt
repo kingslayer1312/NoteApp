@@ -46,7 +46,7 @@ fun NoteAppScreen(
     Column(
         modifier = Modifier
             .padding(0.dp)
-            .background(colorResource(id = R.color.perlwinkle))
+            .background(colorResource(id = R.color.desertSand))
     ) {
         TopAppBar(
             title = {
@@ -56,8 +56,8 @@ fun NoteAppScreen(
                     fontWeight = FontWeight(800)
                 )
             },
-            backgroundColor = colorResource(id = R.color.perlwinkleDark),
-            contentColor = colorResource(id = R.color.richBlack)
+            backgroundColor = colorResource(id = R.color.violetJTC),
+            contentColor = colorResource(id = R.color.desertSand)
         )
 
         Column(
@@ -81,7 +81,7 @@ fun NoteAppScreen(
                 maxLine = 3,
                 onTextChange = {
                     if (it.all { char ->
-                            char.isLetter() || char.isWhitespace()
+                            char.isLetterOrDigit() || char.isWhitespace() || char.isDigit()
                         }) description = it
                 })
 
@@ -126,7 +126,7 @@ fun NoteRow(
                 )
             )
             .fillMaxWidth(),
-        color = colorResource(id = R.color.perlwinkleDark),
+        color = colorResource(id = R.color.violetJTC),
         elevation = 6.dp
     ) {
         Column(
@@ -140,28 +140,28 @@ fun NoteRow(
                 style = MaterialTheme.typography.body1,
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
-                color = colorResource(id = R.color.richBlack)
+                color = colorResource(id = R.color.desertSand)
             )
 
             Divider(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 0.dp, top = 10.dp, bottom = 10.dp),
-                color = colorResource(id = R.color.frenchGray),
+                color = colorResource(id = R.color.desertSand),
                 thickness = 3.dp
             )
             Text(
                 text = note.description,
                 style = MaterialTheme.typography.subtitle1,
                 fontSize = 17.sp,
-                color = colorResource(id = R.color.charcoal)
+                color = colorResource(id = R.color.white)
             )
             Text(
                 modifier = Modifier.padding(top = 7.dp, bottom = 7.dp),
                 text = formatDate(note.entryDate.time),
                 style = MaterialTheme.typography.caption,
                 fontWeight = FontWeight.Bold,
-                color = colorResource(id = R.color.charcoal)
+                color = colorResource(id = R.color.mintCream)
             )
 
             NoteButton(
@@ -169,8 +169,8 @@ fun NoteRow(
                 onClick = {
                     onRemoveNote(note)
                 },
-                backgroundColor = colorResource(id = R.color.perlwinkle),
-                contentColor = colorResource(id = R.color.marianBlue)
+                backgroundColor = colorResource(id = R.color.desertSand),
+                contentColor = colorResource(id = R.color.violetJTC)
             )
 
         }
