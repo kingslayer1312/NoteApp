@@ -28,14 +28,7 @@ class NoteViewModel @Inject constructor(private val repository: NoteRepository) 
             repository.getAllNotes().distinctUntilChanged().
                     collect {
                             listOfNotes ->
-                        if (listOfNotes.isEmpty()){
-                            Log.d("Empty", "Empty list")
-                        }
-                        else {
                             _noteList.value = listOfNotes
-                        }
-
-
                     }
         }
         //noteList.addAll(NotesDataSource().loadNotes())

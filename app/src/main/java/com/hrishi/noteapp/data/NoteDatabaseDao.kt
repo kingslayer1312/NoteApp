@@ -19,8 +19,8 @@ interface NoteDatabaseDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(note: Note)
 
-    @Query("DELETE from notes_table")
-    suspend fun deleteAll()
+    //@Query("DELETE from notes_table")
+    //suspend fun deleteAll()
 
     @Delete
     suspend fun deleteOneItem(note: Note)
